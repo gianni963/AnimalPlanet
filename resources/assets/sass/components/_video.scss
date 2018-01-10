@@ -1,0 +1,49 @@
+.video-placeholder{
+	
+	position: relative;
+	background-color: #111;
+	padding-top: 56.25%;
+	width: 100%;
+	max-width: 100%; 
+}
+
+.video-placeholder__header{
+	font-size: 14px;
+	position: absolute;
+	top: 50%;
+	transform: translateX(-50%);
+	left: 50%;
+}
+
+.video__view {
+	
+	font-size: 14px;
+	margin-bottom: 12px;
+}
+
+.video__vote{
+	font-size: 14px;	
+}
+
+.video__vote-button{
+	color: #636b6f;	
+
+	&:hover, &:focus {
+
+		txt-decoration: none;
+	}
+}
+
+.video__vote-button--voted{
+	color: #3d4fff;
+}
+
+.video-comment {
+	
+	margin-bottom: 8px;
+}
+
+.video-comment__input {
+	
+	margin: 8px 0 8px;
+}
