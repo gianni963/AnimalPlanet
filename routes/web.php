@@ -19,7 +19,7 @@ Route::get('/auth/activate/resend', 'Auth\ActivationResendController@showResendF
 Route::post('/auth/activate/resend', 'Auth\ActivationResendController@resend');
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/guidelines', 'guidelinesController@index')->name('guidelines');
+Route::get('/guidelines', 'GuidelinesController@index')->name('guidelines');
 
 Route::get('/contact', 'ContactController@index')->name('contact');
 Route::post('/contact', 'ContactController@postContact')->name('postContact');

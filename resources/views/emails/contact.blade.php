@@ -1,4 +1,4 @@
-<h3>True Planet. You have a New Contact Via the contact Form</h3>
+<h3>DuniaTube. You have a New Contact Via the contact Form</h3>
 
 <div>
 	{{ $bodyMessage }}
