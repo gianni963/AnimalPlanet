@@ -8,6 +8,6 @@
 	</div>
 	<br/>
     <hr/>
-    <p style="text-align:center;">Animalesk 2017</p>
+    <p style="text-align:center;">DuniaTube 2017</p>
   </div>
 </footer>
