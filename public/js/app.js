@@ -71378,8 +71378,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 			return axios.get(this.endpoint + '?' + this.getQuery()).then(function (response) {
 				_this2.response = response.data.data;
+				console('reussi');
 			}).catch(function (error) {
 				console.log(error);
+				console.log('raté');
 			});
 		},
 		getQuery: function getQuery() {
