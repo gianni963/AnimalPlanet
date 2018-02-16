@@ -71376,9 +71376,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		getRecords: function getRecords() {
 			var _this2 = this;
 
-			return axios.get(this.endpoint + '?' + this.getQuery()).then(function (response) {
+			return this.$http.get(this.endpoint + '?' + this.getQuery()).then(function (response) {
 				_this2.response = response.data.data;
-				console('reussi');
 			}).catch(function (error) {
 				console.log(error);
 				console.log('raté');

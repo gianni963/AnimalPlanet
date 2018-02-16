@@ -194,9 +194,9 @@
 		},
 		methods: {
 			getRecords () {
-				return axios.get(`${this.endpoint}?${this.getQuery()}`).then((response) => {
+				return this.$http.get(`${this.endpoint}?${this.getQuery()}`).then((response) => {
 					this.response = response.data.data
-					console('reussi');
+
 				}).catch(function (error) {
    				 	console.log(error);
    				 	console.log('raté');
