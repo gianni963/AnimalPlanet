@@ -196,7 +196,14 @@
 			getRecords () {
 				return axios.get(`${this.endpoint}?${this.getQuery()}`).then((response) => {
 					this.response = response.data.data
+				}).then(function (response) {
+      				 return otpSent(response)
 				})
+				.catch(function (error) {
+				      console.log(error.response);
+				 })
+			
+
 			},
 
 			getQuery () {
