@@ -8,6 +8,8 @@
     <!-- CSRF Token -->    <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta name="description" content="Animals and nature videos">
+
     <script>
         window.pettube = {
             url:'{{ config('app.url') }}',

@@ -46,10 +46,10 @@ Route::group(['middleware' => ['admin']], function(){
 	Route::get('/admin_panel_777/videos', 'Admin\VideoController@index');
 	Route::get('/admin_panel_777/comments', 'Admin\CommentController@index');
 	Route::get('/admin_panel_777/channels', 'Admin\ChannelController@index');
-	Route::resource('admin/datatable/users', 'DataTable\UserController');
-	Route::resource('admin/datatable/videos', 'DataTable\VideoController');
-	Route::resource('admin/datatable/comments', 'DataTable\CommentController');
-	Route::resource('admin/datatable/channels', 'DataTable\ChannelController');
+	Route::resource('/admin/datatable/users', 'DataTable\UserController');
+	Route::resource('/admin/datatable/videos', 'DataTable\VideoController');
+	Route::resource('/admin/datatable/comments', 'DataTable\CommentController');
+	Route::resource('/admin/datatable/channels', 'DataTable\ChannelController');
 });
 //USER AUTHENTIFICATED
 Route::group(['middleware' => ['auth']], function(){
