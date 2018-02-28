@@ -7,7 +7,7 @@
 
     <!-- CSRF Token -->    <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} - Animals and nature</title>
     <meta name="description" content="Animals and nature videos">
 
     <script>
