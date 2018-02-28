@@ -20,6 +20,6 @@
 }
 .navbar-brand small {
   padding-top: 5px;
-  display:block;
-  font-size:12px;
+  display:block !important;
+  font-size:12px !important;
 }
