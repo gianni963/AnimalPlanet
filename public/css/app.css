@@ -8406,3 +8406,13 @@ button.close {
   }
 }
 
+.navbar-brand {
+  line-height:12px;
+  
+  padding-bottom:5px;
+}
+.navbar-brand small {
+  padding-top: 5px;
+  display:block;
+  font-size:12px;
+}
