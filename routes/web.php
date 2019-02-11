@@ -83,5 +83,46 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::get('/profile/{user}/deleteAccount', 'ProfileController@getDeleteAccount')->name('profile.getDeleteAccount');
 	Route::post('/profile/{user}/deleteAccount', 'ProfileController@postDeleteAccount')->name('profile.postDeleteAccount');
 
+
+
 });
+
+	//FORUM
+//Route::view('scan', 'scan');
+
+Route::get('/forum/threads', 'ThreadsController@index')->name('threads');
+Route::get('/forum/threads/create', 'ThreadsController@create');
+Route::get('/forum/threads/search', 'ForumSearchController@show');
+Route::get('/forum/threads/{topic}/{thread}', 'ThreadsController@show');
+Route::patch('/forum/threads/{topic}/{thread}', 'ThreadsController@update');
+
+Route::delete('/forum/threads/{topic}/{thread}', 'ThreadsController@destroy');
+Route::post('/forum/threads', 'ThreadsController@store');
+Route::get('/forum/threads/{topic}', 'ThreadsController@index');
+
+Route::post('/forum/locked-threads/{thread}', 'LockedThreadsController@store')->name('locked-threads.store')->middleware('admin');
+Route::delete('/forum/locked-threads/{thread}', 'LockedThreadsController@destroy')->name('locked-threads.destroy')->middleware('admin');
+
+Route::get('/forum/threads/{topic}/{thread}/replies', 'RepliesController@index');
+Route::post('/forum/threads/{topic}/{thread}/replies', 'RepliesController@Store');
+Route::patch('/forum/replies/{reply}', 'RepliesController@update');
+Route::delete('/forum/replies/{reply}', 'RepliesController@destroy')->name('replies.destroy');
+
+Route::post('/forum/replies/{reply}/best', 'BestRepliesController@store')->name('best-replies.store');
+
+Route::post('/forum/threads/{topic}/{thread}/subscriptions', 'ThreadSubscriptionsController@store')->middleware('auth');
+Route::delete('/forum/threads/{topic}/{thread}/subscriptions', 'ThreadSubscriptionsController@destroy')->middleware('auth');
+
+Route::post('/forum/replies/{reply}/favorites', 'FavoritesController@store');
+Route::delete('/forum/replies/{reply}/favorites', 'FavoritesController@destroy');
+
+Route::get('/public_profiles/{user}', 'PublicProfilesController@show')->name('publicProfile');
+Route::get('/public_profiles/{user}/notifications', 'UserNotificationsController@index');
+Route::delete('/public_profiles/{user}/notifications/{notification}', 'UserNotificationsController@destroy');
+
+//Users
+Route::get('api/users','Api\UsersController@index');
+Route::post('api/users/{user}/avatar','Api\UserAvatarController@store')->middleware('auth')->name('avatar');
+
+
 

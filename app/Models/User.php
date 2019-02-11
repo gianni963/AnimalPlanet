@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use App\Models\Activity;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -16,7 +18,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password',
-        'active', 'activation_token',
+        'active', 'activation_token','avatar_path'
     ];
 
     /**
@@ -25,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'email',
     ];
 
     public function isAdmin()
@@ -78,6 +80,61 @@ class User extends Authenticatable
     public function scopeByEmail(Builder $builder, $email)
     {
         return $builder->where('email', $request->email);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
+
+    public function threads()
+    {
+        return $this->hasMany(Thread::class)->latest();
+    }
+
+    public function lastReply()
+    {
+        return $this->hasOne(Reply::class)->latest();
+    }
+
+    public function activity()
+    {
+        return $this->hasMany(Activity::class);
+    }
+
+    public function read($thread)
+    {
+        cache()->forever(
+            $this->visitedThreadCacheKey($thread),
+             \Carbon\Carbon::now()
+         );        
+    }
+
+    // public function getAvatarPathAttribute($avatar)
+    // {
+    //     if($avatar){
+    //         return '/storage/' . $avatar;
+    //     }else{
+    //         return '/storage/images/avatars/default.png';
+    //     }
+
+    // }
+
+    public function getAvatarPathAttribute($avatar)
+    {
+
+        if(! $avatar) {
+            
+            return config('petube.buckets.images') . '/avatar/default.png';
+
+        }
+
+        return config('petube.buckets.images') .'/avatar/' . $avatar ;
+    }
+
+    public function visitedThreadCacheKey($thread)
+    {
+        return sprintf('users.%s.visits.%s', $this->id, $thread->id);        
     }
 
 }

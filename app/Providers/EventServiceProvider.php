@@ -16,6 +16,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Auth\UserRequestedActivationEmail' => [
             'App\Listeners\Auth\SendActivationEmail',
         ],
+        'App\Events\ThreadReceivedNewReply' => [
+            'App\Listeners\NotifyMentionedUsers',
+            'App\Listeners\NotifySubscribers'
+        ],
     ];
 
     /**

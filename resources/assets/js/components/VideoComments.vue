@@ -2,7 +2,7 @@
 	<div>
 		<p>{{comments.length}} {{ pluralizeComment(comments.length) }} </p>
 
-		<div class="video-comment clearfix" v-if="$root.user.authenticated">
+		<div class="video-comment clearfix" v-if="signedIn">
 			<textarea placeholder="Add a comment" class="form-control video-comment__input" v-model="body"></textarea>
 
 			<div class="pull-right">
@@ -21,7 +21,7 @@
 					<a :href="'/channel/' + comment.channel.data.slug">{{ comment.channel.data.name }}</a> {{ comment.created_at_human }}
 					<p>{{ comment.body }}</p>
 
-					<ul class="list-inline" v-if="$root.user.authenticated">
+					<ul class="list-inline" v-if="signedIn">
 						<li>
 							<a href="#" @click.prevent ="toggleReplyForm(comment.id)">{{ replyFormShow === comment.id ? 'Cancel' : 'Reply' }}</a>
 						</li>
@@ -48,7 +48,7 @@
 							<a :href="'/channel/' + reply.channel.data.slug">{{ reply.channel.data.name }}</a> {{ reply.created_at_human }}
 							<p>{{ reply.body }}</p>
 
-							<ul class="list-inline" v-if="$root.user.authenticated">
+							<ul class="list-inline" v-if="signedIn">
 								<li>
 									<a href="#" v-if="$root.user.id === reply.user_id" @click.prevent="deleteComment(reply.id)">Delete</a>
 								</li>
@@ -76,6 +76,12 @@
 			videoUid: null,
 
 		},
+        computed: {
+
+            signedIn() {
+                return window.pettube.signedIn;
+            }
+        },
 		methods : {
 			toggleReplyForm(commentId) {
 

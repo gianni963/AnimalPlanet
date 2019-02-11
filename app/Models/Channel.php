@@ -8,7 +8,9 @@ use Laravel\Scout\Searchable;
 class Channel extends Model
 {
     use Searchable;
-    protected $fillable = [ 'name', 'slug', 'description', 'image_filename'];
+
+    // retirer user_id à la fin
+    protected $fillable = [ 'user_id', 'name', 'slug', 'description', 'image_filename'];
 
     public function user()
     {

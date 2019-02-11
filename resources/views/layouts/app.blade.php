@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -18,6 +19,11 @@
                 authenticated: {{Auth::check() ? 'true' : 'false' }},
             }
         };
+        window.pettube = {!! json_encode([
+            'signedIn' => Auth::check(),
+            'user' => Auth::user(),
+        ]) !!};
+
     </script>
     <!-- Styles -->
     <link href="http://vjs.zencdn.net/6.2.8/video-js.css" rel="stylesheet">
@@ -27,6 +33,18 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
     <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
+    <style>
+        body {padding-bottom: 70px;}
+        .level {display: flex; align-items: center;}
+        .level-item {margin-right: 1em;}
+        .flex { flex: 1; }
+        .mr-1 { margin-right: 1em; }
+        .ml-a { margin-left: auto; }
+        [ v-cloak ] { display: none; }
+        .ais-highlight > em { background: yellow; font-style:normal;}
+
+    </style>
+    @yield('header')
 </head>
 <body>
     <div id="app">
@@ -36,6 +54,8 @@
                 @include('layouts.partials._alerts')
             </div>
         @yield('content')
+
+        <flash message="{{ session('flash') }}"></flash>
 
         @include('layouts.partials._footer')
     </div>

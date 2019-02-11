@@ -27,7 +27,7 @@ class AddAdminToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumns('admin', 'admin_title');
+            $table->dropColumn('admin', 'admin_title');
         });
     }
 }

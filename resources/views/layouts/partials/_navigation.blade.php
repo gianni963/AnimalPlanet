@@ -22,7 +22,7 @@
             <!-- Left Side Of Navbar -->
             <form action="/search" method="get" class="navbar-form navbar-left">
                 <div class="form-group">
-                    <input type="text" name="q" class="form-control" placeholder="Search" value="{{ Request::get('q') }}">
+                    <input type="text" name="q" class="form-control" placeholder="Search a video" value="{{ Request::get('q') }}">
                 </div>
                 <button type="submit" class="btn btn-default">Search</button>
             </form>
@@ -33,10 +33,12 @@
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
+                    <li><a  style="color:red; font-weight: bold" href="/forum/threads">Forum</a></li>
                 @if (Auth::guest())
                     <li><a href="{{ route('login') }}">Login</a></li>
                     <li><a href="{{ route('register') }}">Register</a></li>
                 @else
+
                     <li><a href="{{ url('/upload') }}">Upload Video</a></li>
 
                     <li class="dropdown">
@@ -50,6 +52,7 @@
                                 <a href="{{ url('/channel/'. $channel->slug) }} ">Your channel</a>
                                 <a href="{{ url('/channel/'. $channel->slug. '/edit') }}">Channel settings</a>
                                 <a href="{{ url('/profile/') }}">Profile</a>
+                                <a href="/forum/threads?by={{ auth()->user()->name }}">My Threads</a>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
@@ -62,6 +65,7 @@
                             </li>
                         </ul>
                     </li>
+                    <user-notifications></user-notifications>
                 @endif
             </ul>
         </div>
