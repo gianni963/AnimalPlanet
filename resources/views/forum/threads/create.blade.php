@@ -20,7 +20,7 @@
                                 <option value="">Choose One...</option>
 
                                 @foreach($topics as $topic)
-                                    <option value="{{ $topic->id }}">
+                                    <option value="{{ $topic->id }}" {{ old('topic_id') == $topic->id ? 'selected' : '' }}>
                                         {{$topic->name}}
                                     </option>
                                 @endforeach
