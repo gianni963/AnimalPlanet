@@ -33,7 +33,7 @@
 					<textarea id="message" name="message" placeholer="write your message here" class="form-control"></textarea>
 						@if ($errors->has('message'))
                             <span class="help-block">
-                                     <strong>{{ $errors->first('emessge') }}</strong>
+                                     <strong>{{ $errors->first('message') }}</strong>
                                </span>
                         @endif
 				</div>
