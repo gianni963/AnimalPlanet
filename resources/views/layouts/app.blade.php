@@ -26,10 +26,10 @@
 
     </script>
     <!-- Styles -->
-    <link href="http://vjs.zencdn.net/6.2.8/video-js.css" rel="stylesheet">
+    <link href="https://vjs.zencdn.net/6.2.8/video-js.css" rel="stylesheet">
 
       <!-- If you'd like to support IE8 -->
-      <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+      <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
     <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
