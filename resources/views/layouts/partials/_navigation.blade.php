@@ -1,73 +1,83 @@
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
+<!-- Main Bar-->
+<div id="main-bar" class="main-bar-v2">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2 col-sm-2 col-xs-12">
+				<div class="logo">
+					<a href="{{ url('/') }}">
+						<img class="img-responsive" src="{{ asset('images/logo-blue.png') }}" alt="Logo">	
+					</a>
+				</div>					
+			</div>
 
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+			<div style="padding-top: 20px" class="col-md-2 pull-right">
+				@if (Auth::guest())
+                
+					<a  style="font-size: 18px;margin-right: 10px;" href="{{ route('login') }}">Login</a>
+				
+				
+					<a  style="font-size: 18px;" href="{{ route('register') }}">Register</a>
+				@else
+                    <a style="font-size: 18px;" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                		{{ csrf_field() }}
+                    </form>
+				@endif
+			</div>
+		</div>
+	</div>
+</div>
 
-            <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'PettoTube') }}
-                <small>Animals and nature</small>
-            </a>
+	<!-- Main Bar -->
 
-        </div>
 
-        <div class="collapse navbar-collapse" id="app-navbar-collapse">
-            <!-- Left Side Of Navbar -->
+
+<!-- Main Navigation -->
+
+<div id="navigation-w-search">
+	<div id="main-navigation" class="nav-v2">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-sm-12 col-xs-12 for-drop-search">
+					<div id="cssmenu" class="cssmenu-v2">
+						<ul>
+						   <li><a href="{{ url('/') }}"><i class="fi ion-ios-home"></i>Home</a> </li>
+						   <li><a href="/forum/threads"><i class="fi ion-android-apps"></i>Forum</a></li>
+						   <li><a href="#">About</a></li>
+
+						   	@if (!Auth::guest())
+							  	<li><a href="{{ url('/upload') }}">Upload Video</a></li>
+							  	<li><a href="#"><i class="fi ion-person"></i>{{ Auth::user()->name }}</a>
+									<ul>
+
+										<li><a href="{{ url('/videos') }} ">Your Videos</a></li>
+										<li><a href="{{ url('/channel/'. $channel->slug) }} ">Your channel</a></li>
+										<li><a href="{{ url('/channel/'. $channel->slug. '/edit') }}">Channel settings</a></li>
+										<li><a href="{{ url('/profile/') }}">Profile</a></li>
+										<li><a href="/forum/threads?by={{ auth()->user()->name }}">Your Threads</a></li>
+									</ul>
+							  	</li>
+							<user-notifications></user-notifications>
+							@endif
+ 
+						</ul>
+					</div>						
+				</div>
+					<div class="col-md-4 col-sm-12 col-xs-11">
             <form action="/search" method="get" class="navbar-form navbar-left">
                 <div class="form-group">
                     <input type="text" name="q" class="form-control" placeholder="Search a video" value="{{ Request::get('q') }}">
                 </div>
                 <button type="submit" class="btn btn-default">Search</button>
             </form>
-            <ul class="nav navbar-nav">
-                &nbsp;
-            </ul>
+					</div>					
+			</div>
+		</div>			
+	</div>	
+</div>
 
-            <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-nav navbar-right">
-                <!-- Authentication Links -->
-                    <li><a  style="color:red; font-weight: bold" href="/forum/threads">Forum</a></li>
-                @if (Auth::guest())
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
-                @else
-
-                    <li><a href="{{ url('/upload') }}">Upload Video</a></li>
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="{{ url('/videos') }} ">Your Videos</a>
-                                <a href="{{ url('/channel/'. $channel->slug) }} ">Your channel</a>
-                                <a href="{{ url('/channel/'. $channel->slug. '/edit') }}">Channel settings</a>
-                                <a href="{{ url('/profile/') }}">Profile</a>
-                                <a href="/forum/threads?by={{ auth()->user()->name }}">My Threads</a>
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                    <user-notifications></user-notifications>
-                @endif
-            </ul>
-        </div>
-    </div>
-</nav>
+	<!-- Main Navigation -->

@@ -5,17 +5,10 @@
            
 
      <!-- USER PROFILE ROW STARTS-->
-        <div class="row">
-            <div class="col-md-3 col-sm-3">
-                                   
-                 <div class="col-md-6">
-                    <div class="text-center">
-                        <a href="{{ route('profile.getDeleteAccount', $user) }}" class="btn btn-danger btn-sm"> <i class="fa fa-user-plus" ></i> &nbsp;Delete Account</a> 
-                    </div>
-                </div>
-            </div>
+        <div class="row" style="padding: 30px; margin-left: 70px;">
+
             
-            <div class="col-md-9 col-sm-9  user-wrapper">
+            <div class="col-md-9 col-sm-9">
                 <div class="description">
                      <h3>{{$user->name}}</h3>
                 <hr />
@@ -47,25 +40,34 @@
                                                     <span class="help-block">
                                                         {{ $errors->first('email') }}
                                                     </span>
-                                                @endif
+                                            @endif
                                         </div>
                                     </div>
-                                </div>
-
-
-                                <div class="col-md-6">
-
-                                </div>
-                                <div class="col-md-6">
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-info btn-fill btn-wd">Update profile</button>
-                                </div>
+                                   <div class="col-md-3" style="padding-top: 25px;">
+                                        <div class="text-center">
+                                                <button type="submit" class="btn btn-info btn-fill btn-wd">Update profile</button>
+                                        </div>
+                                    </div>
+         
                                 </div>
                                 <div class="clearfix"></div>
 
+
                             {{ csrf_field() }}
                             {{ method_field('PATCH') }}
+
+
                             </form>
+
+
+                            <div class="col-md-3 col-sm-3" style="padding-right:15px;">
+                                   
+                                 <div class="col-md-6">
+                                    <div class="text-center">
+                                        <a href="{{ route('profile.getDeleteAccount', $user) }}" class="btn btn-danger btn-sm"> &nbsp;Delete Account</a> 
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
