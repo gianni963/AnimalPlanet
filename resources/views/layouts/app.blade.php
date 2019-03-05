@@ -62,6 +62,7 @@
     .ais-highlight > em { background: yellow; font-style:normal;}
 
 </style>
+@yield('header')
 </head>
 <body id="index-v2">
 	
