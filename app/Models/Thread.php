@@ -178,5 +178,10 @@ class Thread extends Model
 
     }
 
+    public function getBodyAttribute($body)
+    {
+        return \Purify::clean($body);
+    }
+
 
 }

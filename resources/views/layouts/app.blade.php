@@ -49,6 +49,7 @@
   <!-- If you'd like to support IE8 -->
 <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.1.0/trix.css" rel="stylesheet">
 	<link href="{{ asset('css/footer.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/profile.css') }}" rel="stylesheet">
 <style>
@@ -75,9 +76,9 @@
 		            <div class="container">
 		                @include('layouts.partials._alerts')
 		            </div>
-
-		    	@yield('content')
-		    	
+		            <div style="padding-top: 50px">
+		    		@yield('content')
+		    		</div>
 		    	</div>
 		    	
 		    

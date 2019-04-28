@@ -34,7 +34,9 @@
 
                         <div class="form-group">
                             <label for="body">Description:</label>
-                            <textarea name="body" id="body" class="form-control" rows="8" placeholder="This thread is about..." required>{{ old('body') }}</textarea>
+                            <wysiwyg name="body"></wysiwyg>
+<!--                             
+                            <textarea name="body" id="body" class="form-control" rows="8" placeholder="This thread is about..." required>{{ old('body') }}</textarea> -->
                         </div>
                         <div class="form">
                             <div class="g-recaptcha" data-sitekey="6Lf8WXMUAAAAAANYhMgnhdtSjuhlN0cRd0P9sbmL"></div>

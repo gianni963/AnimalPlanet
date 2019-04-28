@@ -2,14 +2,8 @@
 	<div>
 		<div v-if="signedIn">
 		      <div class="form-group">
-		                    <textarea name="body" 
-		                    		id="body" 
-		                    		class="form-control" 
-		                    		placeholder="Write your answer..." 
-		                    		rows="5" 
-		                    		required
-		                    		v-model="body">
-		                    </textarea>
+		      	<wysiwyg name="body" v-model="body" placeholder="write your answer here..." ref="trix" :shouldClear="completed"></wysiwyg>
+
                </div> 
 
 	               <button type="submit" 
@@ -31,6 +25,7 @@
 		data() {
 			return {
 				body: '',
+				completed: false
 			};
 		},
 
@@ -59,8 +54,11 @@
 					})
 					.then(({data}) => {
 						this.body='';
+						this.completed = true;
 
 						flash('Your reply has been posted');
+
+						this.$refs.trix.$refs.trix.value = '';
 
 						this.$emit('created', data);
 					});
