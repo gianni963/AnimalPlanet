@@ -37409,7 +37409,7 @@ window.Vue.prototype.authorize = function () {
 Vue.prototype.signedIn = window.pettube.signedIn;
 
 var VueResource = __webpack_require__(499);
-Vue.config.ignoredElements = ['trix-editor'];
+Vue.config.ignoredElements = ['wysiwyg'];
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

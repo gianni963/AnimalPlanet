@@ -34,7 +34,7 @@ window.Vue.prototype.authorize =  function (...params) {
 Vue.prototype.signedIn = window.pettube.signedIn;
 
 var VueResource =  require('vue-resource');
-Vue.config.ignoredElements = ['trix-editor'];
+Vue.config.ignoredElements = ['wysiwyg'];
 
 
 /**
